@@ -23,8 +23,8 @@ public class SmtpEmailService {
         mailMessage.setTo(toEmail);
         mailMessage.setText(
                 "Name: " + email.getName() +
-                "/nEmail: " + email.getEmailAdress() +
-                "/n Message: " + email.getMessage());
+                "\nEmail: " + email.getEmailAdress() +
+                "\nMessage: " + email.getMessage());
         mailMessage.setSubject("Contact email");
         return mailMessage;
     }
