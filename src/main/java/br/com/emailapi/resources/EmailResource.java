@@ -16,12 +16,8 @@ public class EmailResource {
     private SmtpEmailService emailService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> sendEmail(@Valid @RequestBody Email email){
-        try {
-            emailService.sendEmail(email);
-            return ResponseEntity.ok().build();
-        }catch (Exception e){
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<Void> sendEmail(@Valid @RequestBody Email email) {
+        emailService.sendEmail(email);
+        return ResponseEntity.ok().build();
     }
 }

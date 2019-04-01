@@ -11,6 +11,8 @@ public class SmtpEmailService {
     @Autowired
     private MailSender mailSender;
 
+    @Value("{$email}")
+    private String toEmail;
 
     public void sendEmail(Email email){
         mailSender.send(prepareSimpleMailMessageFromEmail(email));
@@ -18,8 +20,11 @@ public class SmtpEmailService {
 
     private SimpleMailMessage prepareSimpleMailMessageFromEmail(Email email){
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(email.getEmailAdress());
-        mailMessage.setText(email.getMessage());
+        mailMessage.setTo(toEmail);
+        mailMessage.setText(
+                "Name: " + email.getName() +
+                "/nEmail: " + email.getEmailAdress() +
+                "/n Message: " + email.getMessage());
         mailMessage.setSubject("Contact email");
         return mailMessage;
     }
