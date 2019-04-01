@@ -11,7 +11,7 @@ public class SmtpEmailService {
     @Autowired
     private MailSender mailSender;
 
-    @Value("{$email}")
+    @Value("${email}")
     private String toEmail;
 
     public void sendEmail(Email email){
